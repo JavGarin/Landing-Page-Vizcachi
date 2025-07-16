@@ -13,13 +13,84 @@
     <header class="home">
         <video autoplay muted loop id="bg-video" src="/assets/videos/14593616-hd_1920_1080_25fps.webm"></video>
         <div class="home-content">
+            <img src="assets/images/Vizcachi-Logo-01.png" alt="Vizcachi Logo" class="home-logo">
             <h1 class="main-title">Vizcachi</h1>
             <p class="subtitle">Tecnología verde: Recicla con inteligencia, adopta una mascota digital.</p>
             <a href="https://coff.ee/vizcachiapv" class="cta-button donate-button" target="_blank" rel="noopener noreferrer"><i class="fas fa-coffee"></i> Invítanos un Café</a>
         </div>
+        <a href="#project" class="scroll-down-indicator" aria-label="Ir a la siguiente sección">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </header>
 
     <main>
+        <section id="project" class="grid-section">
+            <div class="section-title">
+                <h2>El Proyecto</h2>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <details>
+                        <summary>
+                            <h3>Nuestra Misión</h3>
+                        </summary>
+                        <p>Transformamos el reciclaje de pilas y baterías en una experiencia accesible y motivadora mediante inteligencia artificial para identificación precisa, geolocalización de puntos limpios y un sistema gamificado con mascotas virtuales, creando un puente efectivo entre la acción individual y el impacto colectivo. Nuestra visión es escalar este modelo para convertirlo en el estándar de economía circular, integrando progresivamente más tipos de residuos peligrosos, fortaleciendo alianzas con gobiernos y empresas, y masificando la cultura sostenible mediante tecnología intuitiva que haga del cuidado ambiental un hábito gratificante y medible. Tecnología con conciencia, planeta con futuro.</p>
+                    </details>
+                </div>
+                <div class="grid-item">
+                    <details>
+                        <summary>
+                            <h3>Visión a Futuro</h3>
+                        </summary>
+                        <p>Buscamos ser el referente en economía circular, uniendo tecnología avanzada y participación comunitaria para revolucionar el reciclaje. Expandiremos nuestro reconocimiento inteligente a más residuos peligrosos, formando alianzas con gobiernos y empresas para crear un ecosistema sostenible. Queremos transformar cada interacción en la app en un paso concreto hacia ciudades más limpias, donde los usuarios no solo reciclen, sino que generen impacto ambiental medible a escala global.</p>
+                    </details>
+                </div>
+                <div class="grid-item">
+                    <details>
+                        <summary>
+                            <h3>Tecnología</h3>
+                        </summary>
+                        <p>Desarrollamos la app con Flutter para garantizar multiplataforma (iOS/Android), usando JavaScript en componentes web críticos y Firebase como backend escalable para gestión de usuarios y datos de reciclaje. Implementamos TensorFlow Lite para el reconocimiento de pilas mediante IA, junto con Google Maps API para la geolocalización de puntos limpios. Todo el sistema se complementa con herramientas de diseño como Figma y análisis de datos con BigQuery para medir impacto en tiempo real.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="eco-pets" class="grid-section">
+            <div class="section-title">
+                <h2>Conoce a tus Eco-Mascotas</h2>
+            </div>
+            <div class="grid-container">
+                <div class="grid-item pet-item">
+                    <details>
+                        <summary>
+                            <img src="/assets/images/vizcachi.gif" alt="Vizcachi">
+                            <h4>Vizcachi</h4>
+                        </summary>
+                        <p>¡Una mascota curiosa y juguetona que adora el reciclaje! Obtienes a Vizcachi al completar tu primer desafío ecológico en la app. Cuídala, alimentala con frutas virtuales (que ganas interactuando y reciclando) y juega con ella para subir de nivel. Desbloquea accesorios y skins especiales (como un traje de "Vizcachi forestal") mientras avanzas. ¡Pronto podrás decorar su hábitat con objetos sostenibles!.</p>
+                    </details>
+                </div>
+                <div class="grid-item pet-item">
+                    <details>
+                        <summary>
+                            <img src="/assets/images/pinwino.gif" alt="Humboldt">
+                            <h4>Humboldt</h4>
+                        </summary>
+                        <p>¡Un pingüino aventurero y sabio que lucha contra el cambio climático! Obtienes a Humboldt al reciclar 10 pilas registrados en la app. Es un explorador polar que te enseñará datos curiosos sobre el medioambiente mientras lo cuidas. Alimentalo con "peces sostenibles" (ganados reciclando) y desbloquea outfits como "Humboldt científico" o "Traje de buzo reciclador". Su misión: inspirarte a reducir tu huella de carbono..</p>
+                    </details>
+                </div>
+                <div class="grid-item pet-item">
+                    <details>
+                        <summary>
+                            <img src="/assets/images/pudu.gif" alt="Pudú">
+                            <h4>Pudú</h4>
+                        </summary>
+                        <p>Pudú ¡La mascota tierna y ecológica de Vizcachi! Desbloquéalo al reciclar pilas/baterias. Aliméntalo con "hojas virtuales" que ganas reciclando, juega con él y descubre sus reacciones adorables (¡hasta baila feliz!). Personalízalo con skins como su "corona de flores" y ayuda a regenerar su bosque virtual mientras reciclas. ¡Tu compañero perfecto para aprender sobre sostenibilidad con diversión!s.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
         <section id="progress">
             <div class="section-title">
                 <h2>Progreso del MVP</h2>
@@ -32,25 +103,45 @@
                 <div class="progress-bar-bg">
                     <div id="progress-bar" class="progress-bar-fill"></div>
                 </div>
+                <div class="fund-allocation-info">
+                    <p>Tu donación impulsa nuestro desarrollo. Así distribuimos los fondos:</p>
+                    <div class="allocation-breakdown">
+                        <div class="allocation-item">
+                            <span class="percentage">60%</span>
+                            <span class="category">Desarrollo y Operaciones</span>
+                        </div>
+                        <div class="allocation-item">
+                            <span class="percentage">25%</span>
+                            <span class="category">Marketing y Publicidad</span>
+                        </div>
+                        <div class="allocation-item">
+                            <span class="percentage">15%</span>
+                            <span class="category">Servicios y Gastos Legales</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="project" class="grid-section">
+        <section id="donate" class="grid-section">
             <div class="section-title">
-                <h2>El Proyecto</h2>
+                <h2>Apoya y Obtén Recompensas</h2>
             </div>
             <div class="grid-container">
-                <div class="grid-item">
-                    <h3>Nuestra Misión</h3>
-                    <p>Aquí describirás la misión y el propósito de tu aplicación. Explica qué problema resuelve y por qué es importante.</p>
+                <div class="grid-item reward-tier">
+                    <h3>Donantes (+ $10)</h3>
+                    <p>Tu nombre aparecerá en una sección especial de agradecimientos en nuestro sitio web. ¡Tu apoyo es fundamental!</p>
+                    <a href="https://coff.ee/vizcachiapv" class="cta-button donate-button" target="_blank" rel="noopener noreferrer"><i class="fas fa-coffee"></i> Invítanos un Café</a>
                 </div>
-                <div class="grid-item">
-                    <h3>Visión a Futuro</h3>
-                    <p>Detalla tus planes a largo plazo. ¿Cómo evolucionará la app? ¿Qué impacto esperas generar en la comunidad?</p>
+                <div class="grid-item reward-tier">
+                    <h3>Beta Testers (+ $100)</h3>
+                    <p>Obtén acceso exclusivo a la versión MVP de la app. Tu feedback será clave para mejorar la experiencia antes del lanzamiento oficial.</p>
+                    <a href="https://coff.ee/vizcachiapv" class="cta-button donate-button" target="_blank" rel="noopener noreferrer"><i class="fas fa-coffee"></i> Invítanos un Café</a>
                 </div>
-                <div class="grid-item">
-                    <h3>Tecnología</h3>
-                    <p>Menciona las tecnologías que planeas usar. Esto puede generar confianza en donantes con perfil técnico.</p>
+                <div class="grid-item reward-tier">
+                    <h3>Inversores y Socios</h3>
+                    <p>Buscamos socios estratégicos que compartan nuestra visión. Contáctanos para explorar oportunidades de inversión.</p>
+                    <a href="mailto:contacto@vizcachi.com" class="cta-button">Contactar</a>
                 </div>
             </div>
         </section>
@@ -74,24 +165,6 @@
                     <img src="assets/images/placeholder.png" alt="Miembro del equipo 3">
                     <h4>Nombre Apellido</h4>
                     <p>Rol en el Proyecto</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="donate" class="grid-section">
-            <div class="section-title">
-                <h2>Cómo Apoyar</h2>
-            </div>
-            <div class="grid-container">
-                <div class="grid-item">
-                    <h3>Donaciones</h3>
-                    <p>Tu contribución directa nos permite cubrir costos de desarrollo, servidores y marketing. Cada aporte cuenta.</p>
-                    <a href="https://coff.ee/vizcachiapv" class="cta-button donate-button" target="_blank" rel="noopener noreferrer"><i class="fas fa-coffee"></i> Invítanos un Café</a>
-                </div>
-                <div class="grid-item">
-                    <h3>Financiamiento</h3>
-                    <p>Buscamos inversores ángeles y socios estratégicos que compartan nuestra visión y quieran ser parte de este viaje.</p>
-                    <a href="mailto:contacto@vizcachi.com" class="cta-button">Contactar</a>
                 </div>
             </div>
         </section>
@@ -125,28 +198,43 @@
     </main>
 
     <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-about">
-                <h3>Vizcachi</h3>
-                <p>Cambiando el mundo a través de la tecnología.</p>
+        <div class="footer-accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Vizcachi</h3>
+                </div>
+                <div class="accordion-content">
+                    <p>Cambiando el mundo a través de la tecnología.</p>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="#project">El Proyecto</a></li>
-                    <li><a href="#team">Equipo</a></li>
-                    <li><a href="#donate">Apoyar</a></li>
-                </ul>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h4>Navegación</h4>
+                </div>
+                <div class="accordion-content">
+                    <ul class="footer-nav-pills">
+                        <li><a href="https://pitch-desk-vizcachi.vercel.app/" target="_blank">El Proyecto</a></li>
+                        <li><a href="#team">Equipo</a></li>
+                        <li><a href="#donate">Apoyar</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-social">
-                <h4>Síguenos</h4>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h4>Síguenos</h4>
+                </div>
+                <div class="accordion-content">
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Vizcachi. Todos los derechos reservados.</p>
+            <p class="footer-watermark">Diseñado por <a href="https://javier-garin-dev.vercel.app/" target="_blank" rel="noopener noreferrer">Javier Garin</a></p>
         </div>
     </footer>
 

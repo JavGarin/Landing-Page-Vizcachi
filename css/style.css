@@ -1,19 +1,19 @@
 :root {
-    /* Paleta 60-30-10: Ecología y Juego */
-    --bg-color: #F0EFEB; /* 60% - Crema claro */
-    --primary-color: #2A4A3A; /* 30% - Verde bosque */
-    --accent-color: #00A8E8; /* 10% - Azul vibrante */
+    /* Paleta Eco-Tech Minimalist */
+    --bg-color: #F9F9F9; /* Blanco Roto */
+    --primary-color: #405D54; /* Verde Azulado Desaturado */
+    --accent-color: #8ac878; /* Terracota / Naranja Quemado */
     
-    --text-color: #1E1E1E; /* Texto principal oscuro */
-    --text-on-dark-bg: #F0EFEB; /* Texto para fondos oscuros */
-    --secondary-color: #ffffff;
-    --button-color: #fbd010;
-    --button-hover: #f4a632; /* Blanco para elementos específicos */
+    --text-color: #212529; /* Gris Carbón */
+    --text-on-dark-bg: #F9F9F9; /* Texto para fondos oscuros */
+    --secondary-color: #ffffff; /* Blanco puro para tarjetas y secciones */
+    --button-color: var(--accent-color); /* El acento es el color principal del botón */
+    --button-hover: #8ac878; /* Un tono más oscuro del acento para el hover */
 }
 
 @font-face {
-    font-family: 'Gamer';
-    src: url(/assets/fonts/Gamer.woff) format('woff');
+    font-family: 'VCR_OSD_MONO';
+    src: url(/assets/fonts/VCR_OSD_MONO.woff) format('WOFF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -26,7 +26,7 @@
 }
 
 body {
-    font-family: 'Gamer', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'VCR_OSD_MONO', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -70,6 +70,15 @@ body {
 
 .home-content {
     z-index: 1;
+    display: flex;
+    flex-direction: column; /* Keep it as a column for the subtitle and button */
+    align-items: center; /* Center everything */
+}
+
+.home-logo {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 1rem;
 }
 
 .main-title {
@@ -78,6 +87,7 @@ body {
     letter-spacing: 2px;
     transform: translateY(-50px);
     opacity: 0;
+    color: #8ac878
 }
 
 .subtitle {
@@ -108,6 +118,30 @@ body {
 
 .cta-button i {
     margin-right: 8px;
+}
+
+/* --- Scroll Down Indicator --- */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    z-index: 1;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px);
+    }
 }
 
 /* --- Progress Bar Section --- */
@@ -144,6 +178,42 @@ body {
     background: linear-gradient(90deg, var(--accent-color), #00cfff);
     border-radius: 15px 0 0 15px;
     transition: width 2s ease-out;
+}
+
+/* --- Fund Allocation Info --- */
+.fund-allocation-info {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.fund-allocation-info p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.allocation-breakdown {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.allocation-item {
+    flex: 1;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+}
+
+.allocation-item .percentage {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.allocation-item .category {
+    font-size: 0.9rem;
+    color: var(--text-color);
 }
 
 /* --- Grid Sections --- */
@@ -209,6 +279,86 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Estilos para la sección de Proyecto con <details> */
+#project .grid-item {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+#project .grid-item:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+#project details {
+    background-color: var(--secondary-color);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#project details:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+#project details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.06);
+}
+
+#project summary {
+    position: relative;
+    padding: 2rem;
+    padding-right: 5rem;
+    cursor: pointer;
+    outline: none;
+    list-style: none;
+}
+
+#project summary::-webkit-details-marker {
+    display: none;
+}
+
+#project summary h3 {
+    margin: 0;
+    display: inline;
+    color: var(--primary-color);
+}
+
+#project summary::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    transition: transform 0.2s ease;
+}
+
+#project details[open] > summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+#project details > p {
+    padding: 0.5rem 2rem 2rem 2rem; /* Padding ajustado */
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.7;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#project details[open] > summary {
+    border-bottom: 1px solid #eee;
+}
+
 /* --- Comments Section --- */
 #comments {
     padding: 6rem 2rem;
@@ -233,52 +383,192 @@ body {
     margin-top: 2rem;
 }
 
+/* --- Eco Pets Section --- */
+#eco-pets {
+    background-color: #fff; /* Match other highlighted sections */
+}
 
-/* --- Footer --- */
+.pet-item {
+    text-align: center; /* Center the content of the pet items */
+}
+
+#eco-pets .grid-item {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+#eco-pets .grid-item:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+#eco-pets details {
+    background-color: var(--secondary-color);
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#eco-pets details:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+#eco-pets details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.06);
+}
+
+#eco-pets summary {
+    position: relative;
+    padding: 2rem;
+    padding-right: 5rem;
+    cursor: pointer;
+    outline: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#eco-pets summary::-webkit-details-marker {
+    display: none;
+}
+
+#eco-pets summary h4 {
+    margin-top: 1rem;
+    color: var(--primary-color);
+}
+
+#eco-pets summary::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    transition: transform 0.2s ease;
+}
+
+#eco-pets details[open] > summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+#eco-pets details > p {
+    padding: 0.5rem 2rem 2rem 2rem; /* Padding ajustado */
+    margin: 0;
+    color: var(--text-color);
+    line-height: 1.7;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+#eco-pets details[open] > summary {
+    border-bottom: 1px solid #eee;
+}
+
+
+
+
+/* --- Donate/Rewards Section --- */
+.reward-tier h3 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.reward-tier .cta-button {
+    margin-top: 1rem;
+}
+
+
+/* --- Footer Accordion --- */
 .site-footer {
     background-color: var(--primary-color);
     color: var(--text-on-dark-bg);
-    padding: 4rem 2rem 2rem;
+    padding: 2rem 0; /* Reduced padding */
 }
 
-.footer-content {
+.footer-accordion {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center; /* Center the items */
     max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
+    height: 150px; /* Fixed height for the accordion container */
+    align-items: center; /* Align items vertically */
 }
 
-.footer-about, .footer-links, .footer-social {
-    flex: 1;
-    margin: 1rem;
-    min-width: 250px;
+.accordion-item {
+    flex: 1; /* Start with equal width */
+    background-color: #4a6d5a; /* A slightly lighter shade of the primary color */
+    margin: 0 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: flex 0.5s ease;
+    position: relative;
+    cursor: pointer;
 }
 
-.footer-about h3 {
+.accordion-item:hover {
+    flex: 3; /* Expand on hover */
+}
+
+.accordion-header {
+    padding: 1rem;
+    text-align: center;
+}
+
+.accordion-header h3, .accordion-header h4 {
     color: var(--accent-color);
-    margin-bottom: 1rem;
+    margin: 0;
+    transition: opacity 0.5s ease;
 }
 
-.footer-links ul {
+.accordion-content {
+    padding: 0 1rem 1rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    text-align: center; /* Center the content */
+}
+
+.accordion-item:hover .accordion-content {
+    opacity: 1;
+    max-height: 100px; /* Adjust as needed */
+}
+
+.accordion-item:hover .accordion-header {
+    opacity: 0.8; /* Slightly fade the header on hover to focus on content */
+}
+
+.footer-nav-pills {
     list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Arrange pills vertically */
+    gap: 8px; /* Space between pills */
 }
 
-.footer-links ul li a {
+.footer-nav-pills li a {
+    display: block;
+    padding: 8px 12px;
+    background-color: var(--primary-color);
     color: var(--text-on-dark-bg);
     text-decoration: none;
-    transition: color 0.3s ease;
+    border-radius: 20px; /* Pill shape */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.footer-links ul li a:hover {
-    color: var(--accent-color);
+.footer-nav-pills li a:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .footer-social a {
     color: var(--text-on-dark-bg);
     font-size: 1.5rem;
-    margin-right: 1rem;
+    margin: 0 0.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -290,7 +580,12 @@ body {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #4a6d5a; /* Un verde más claro para la línea */
+    border-top: 1px solid #4a6d5a;
+}
+
+.footer-watermark a {
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 /* --- Responsive --- */
@@ -301,6 +596,20 @@ body {
 
     .subtitle {
         font-size: 1.2rem;
+    }
+
+    .footer-accordion {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .accordion-item {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .accordion-item:hover {
+        flex: 1;
     }
 
     .footer-content {
