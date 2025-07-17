@@ -175,9 +175,22 @@ body {
 .progress-bar-fill {
     width: 0%; /* Inicia en 0, se llenará con JS */
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-color), #00cfff);
+    background-color: #8ac878; /* Verde del título */
     border-radius: 15px 0 0 15px;
     transition: width 2s ease-out;
+}
+
+.donation-call-to-action p {
+    margin: 18px;
+    text-align: center;
+}
+
+.donation-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 /* --- Fund Allocation Info --- */
@@ -253,6 +266,9 @@ body {
 
 .grid-item {
     background-color: var(--secondary-color);
+    text-align: center;
+    max-width: 600px;
+    height: auto;
     padding: 2rem;
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -265,8 +281,9 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.grid-item img {
-    max-width: 100px; /* Más pequeño para el diseño de equipo */
+#team .grid-item img,
+#eco-pets .grid-item img {
+    max-width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 50%;
@@ -274,12 +291,22 @@ body {
     border: 3px solid var(--accent-color);
 }
 
-.grid-item h3, .grid-item h4 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+#team .grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra verticalmente si hay espacio */
+    text-align: center; /* Mantiene el texto centrado */
+    gap: 0.5rem; /* Espacio entre los elementos internos */
 }
 
-/* Estilos para la sección de Proyecto con <details> */
+#team .grid-item p {
+    margin-bottom: 0;
+}
+
+#team .grid-item .cta-button {
+    margin-top: 0.5rem;
+}
 #project .grid-item {
     padding: 0;
     border: none;
@@ -477,115 +504,137 @@ body {
     color: var(--accent-color);
 }
 
-.reward-tier .cta-button {
-    margin-top: 1rem;
+.reward-tier > * {
+    margin-bottom: 1rem;
 }
 
-
-/* --- Footer Accordion --- */
-.site-footer {
-    background-color: var(--primary-color);
-    color: var(--text-on-dark-bg);
-    padding: 2rem 0; /* Reduced padding */
+.reward-tier > *:last-child {
+    margin-bottom: 0;
 }
 
-.footer-accordion {
-    display: flex;
-    justify-content: center; /* Center the items */
-    max-width: 1200px;
-    margin: 0 auto 2rem;
-    height: 150px; /* Fixed height for the accordion container */
-    align-items: center; /* Align items vertically */
+.reward-tier .cta-button,
+.reward-tier form {
+    margin-top: 1.5rem;
 }
 
-.accordion-item {
-    flex: 1; /* Start with equal width */
-    background-color: #4a6d5a; /* A slightly lighter shade of the primary color */
-    margin: 0 5px;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: flex 0.5s ease;
-    position: relative;
-    cursor: pointer;
+.virtual-pet {
+    margin-top: 1.5rem;
+    max-width: 150px;
+    height: auto;
 }
 
-.accordion-item:hover {
-    flex: 3; /* Expand on hover */
-}
-
-.accordion-header {
-    padding: 1rem;
-    text-align: center;
-}
-
-.accordion-header h3, .accordion-header h4 {
-    color: var(--accent-color);
-    margin: 0;
-    transition: opacity 0.5s ease;
-}
-
-.accordion-content {
-    padding: 0 1rem 1rem;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.5s ease, max-height 0.5s ease;
-    text-align: center; /* Center the content */
-}
-
-.accordion-item:hover .accordion-content {
-    opacity: 1;
-    max-height: 100px; /* Adjust as needed */
-}
-
-.accordion-item:hover .accordion-header {
-    opacity: 0.8; /* Slightly fade the header on hover to focus on content */
-}
-
-.footer-nav-pills {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column; /* Arrange pills vertically */
-    gap: 8px; /* Space between pills */
-}
-
-.footer-nav-pills li a {
-    display: block;
-    padding: 8px 12px;
-    background-color: var(--primary-color);
-    color: var(--text-on-dark-bg);
-    text-decoration: none;
-    border-radius: 20px; /* Pill shape */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.footer-nav-pills li a:hover {
-    background-color: var(--accent-color);
+.pet-name {
+    margin-top: 0.5rem;
+    font-weight: bold;
     color: var(--primary-color);
 }
 
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: auto;
+}
+
+.footer-logo:hover {
+    color: var(--accent-color);
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-color);
+}
+
+.footer-nav a:hover::after {
+    width: 100%;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+}
+
 .footer-social a {
-    color: var(--text-on-dark-bg);
+    color: #ffffff;
     font-size: 1.5rem;
-    margin: 0 0.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-social a:hover {
     color: var(--accent-color);
-    transform: scale(1.2);
+    transform: translateY(-5px);
 }
 
 .footer-bottom {
-    text-align: center;
+    margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid #4a6d5a;
+    border-top: 1px solid #333;
+    width: 100%;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 .footer-watermark a {
     color: var(--accent-color);
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* --- Responsive --- */
@@ -619,5 +668,9 @@ body {
 
     .footer-social a {
         margin: 0 0.5rem;
+    }
+
+    .allocation-breakdown {
+        flex-direction: column;
     }
 }

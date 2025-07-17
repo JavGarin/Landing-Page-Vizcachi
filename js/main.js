@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, "-=0.8");
 
     // --- Lógica de la Barra de Progreso ---
-    const currentAmount = 145; // Dato simulado
+    const currentAmount = 25; // Dato simulado
     const goalAmount = 5000;   // Tu meta
 
     const progressBar = document.getElementById('progress-bar');
@@ -60,5 +60,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 }); // Se dispara cuando el 50% de la sección es visible
 
     observer.observe(progressSection);
+
+    // --- Lógica para copiar correo --- 
+    const contactButton = document.querySelector('.contact-button');
+    if (contactButton) {
+        contactButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = 'vizcachiapp.contact@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                // Feedback visual para el usuario
+                const originalText = contactButton.innerText;
+                contactButton.innerText = '¡Copiado!';
+                setTimeout(() => {
+                    contactButton.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar el correo: ', err);
+                // Opcional: abrir cliente de correo como fallback
+                window.location.href = `mailto:${email}`;
+            });
+        });
+    }
 
 });
