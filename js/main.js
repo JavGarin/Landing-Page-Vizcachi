@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.clipboard.writeText(email).then(() => {
                 // Feedback visual para el usuario
                 const originalText = contactButton.innerText;
-                contactButton.innerText = '¡Copiado!';
+                contactButton.innerText = '¡Correo Copiado!';
                 setTimeout(() => {
                     contactButton.innerText = originalText;
                 }, 2000);
@@ -81,5 +81,43 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- Cargar Muro de Agradecimientos ---
+    async function fetchAndDisplaySupporters() {
+        const wall = document.getElementById('supporters-wall');
+        if (!wall) return; // Si no existe el elemento, no hacer nada
+
+        try {
+            const response = await fetch('/api/supporters');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            const supporters = data.supporters || [];
+
+            if (supporters.length === 0) {
+                wall.innerHTML = '<p>¡Sé el primero en apoyar este proyecto y aparecer aquí!</p>';
+                return;
+            }
+
+            // Limpiar el muro antes de añadir nuevos nombres
+            wall.innerHTML = '';
+
+            // Añadir cada donante como un chip
+            supporters.forEach(name => {
+                const chip = document.createElement('span');
+                chip.className = 'supporter-chip';
+                chip.textContent = name;
+                wall.appendChild(chip);
+            });
+
+        } catch (error) {
+            console.error('Error al cargar los donantes:', error);
+            wall.innerHTML = '<p>No se pudo cargar la lista de donantes. Inténtalo de nuevo más tarde.</p>';
+        }
+    }
+
+    // Llamar a la función para cargar los donantes
+    fetchAndDisplaySupporters();
 
 });

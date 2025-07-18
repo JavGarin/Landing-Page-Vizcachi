@@ -291,26 +291,84 @@ body {
     border: 3px solid var(--accent-color);
 }
 
+/* --- Team Section --- */
+#team .grid-container {
+    align-items: start; /* Alinea los items al inicio */
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
 #team .grid-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centra verticalmente si hay espacio */
-    text-align: center; /* Mantiene el texto centrado */
-    gap: 0.5rem; /* Espacio entre los elementos internos */
+    justify-content: flex-start; /* Alinea el contenido al inicio */
+    text-align: center;
+    gap: 1rem; /* Espacio consistente */
 }
 
-#team .grid-item p {
-    margin-bottom: 0;
+#team .grid-item h5 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
-#team .grid-item .cta-button {
-    margin-top: 0.5rem;
+#team details {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-top: 1rem;
 }
-#project .grid-item {
-    padding: 0;
-    border: none;
-    background-color: transparent;
+
+#team summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    border-radius: 8px 8px 0 0;
+}
+
+#team details p {
+    padding: 1rem;
+    text-align: justify;
+}
+
+.financing-info {
+    background-color: #f0f8ff; /* Un color de fondo suave */
+    border-left: 5px solid var(--accent-color);
+    padding: 2rem;
+    text-align: left;
+}
+
+.financing-info h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.financing-info ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.financing-info li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Responsive --- */
+@media (min-width: 992px) {
+    .team-container {
+        grid-template-columns: 1fr 1fr;
+        align-items: start; /* Alinea los contenedores en la parte superior */
+    }
+
+    #team .grid-item {
+        justify-content: center; /* Centra el contenido del fundador */
+    }
 }
 
 #project .grid-item:hover {
@@ -386,31 +444,47 @@ body {
     border-bottom: 1px solid #eee;
 }
 
-/* --- Comments Section --- */
-#comments {
+/* --- Supporters Wall Section --- */
+#supporters {
+    background-color: #fff; /* Fondo claro para destacar */
     padding: 6rem 2rem;
-    background-color: #fff;
 }
 
-.comment {
+#supporters .section-title p {
+    max-width: 800px;
+    margin: 1rem auto 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.supporters-wall {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.supporter-chip {
     background-color: var(--bg-color);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border-left: 5px solid var(--accent-color);
-}
-
-.comment-author {
-    font-weight: bold;
     color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px; /* Forma de píldora */
+    font-weight: bold;
+    border: 2px solid var(--accent-color);
+    transition: all 0.3s ease;
+    cursor: default; /* El cursor no cambia */
 }
 
-#disqus_thread {
-    margin-top: 2rem;
+.supporter-chip:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-/* --- Eco Pets Section --- */
+/* --- Grid Sections --- */
 #eco-pets {
     background-color: #fff; /* Match other highlighted sections */
 }

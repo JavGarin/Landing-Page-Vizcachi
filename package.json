@@ -1,0 +1,11 @@
+{
+  "name": "vizcachi-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page with dynamic supporters wall.",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/kv": "^1.0.1"
+  }
+}
