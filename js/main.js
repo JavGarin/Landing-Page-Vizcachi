@@ -83,41 +83,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Cargar Muro de Agradecimientos ---
-    async function fetchAndDisplaySupporters() {
-        const wall = document.getElementById('supporters-wall');
+    const commentsPerPage = 5; // Número de comentarios a mostrar por carga
+    let currentOffset = 0;
+    let totalComments = 0;
+
+    const wall = document.getElementById('supporters-wall');
+    const loadMoreButton = document.getElementById('load-more-comments');
+
+    async function fetchAndDisplayComments() {
         if (!wall) return; // Si no existe el elemento, no hacer nada
 
         try {
-            const response = await fetch('/api/supporters');
+            const response = await fetch(`/api/supporters?offset=${currentOffset}&limit=${commentsPerPage}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            const supporters = data.supporters || [];
+            const comments = data.comments || [];
+            totalComments = data.totalComments || 0;
 
-            if (supporters.length === 0) {
-                wall.innerHTML = '<p>¡Sé el primero en apoyar este proyecto y aparecer aquí!</p>';
+            if (currentOffset === 0 && comments.length === 0) {
+                wall.innerHTML = '<p class="no-comments-message">¡Sé el primero en apoyar este proyecto y aparecer aquí!</p>';
+                loadMoreButton.style.display = 'none';
                 return;
             }
 
-            // Limpiar el muro antes de añadir nuevos nombres
-            wall.innerHTML = '';
+            // Renderizar los nuevos comentarios
+            comments.forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment-item';
+                
+                const date = new Date(comment.timestamp);
+                const formattedDate = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
 
-            // Añadir cada donante como un chip
-            supporters.forEach(name => {
-                const chip = document.createElement('span');
-                chip.className = 'supporter-chip';
-                chip.textContent = name;
-                wall.appendChild(chip);
+                commentDiv.innerHTML = `
+                    <p class="comment-nick"><strong>${comment.nick}</strong></p>
+                    ${comment.comment ? `<p class="comment-text">${comment.comment}</p>` : ''}
+                    <span class="comment-date">${formattedDate}</span>
+                `;
+                wall.appendChild(commentDiv);
             });
 
+            currentOffset += comments.length;
+
+            // Mostrar/ocultar botón "Ver más"
+            if (currentOffset < totalComments) {
+                loadMoreButton.style.display = 'block';
+            } else {
+                loadMoreButton.style.display = 'none';
+            }
+
         } catch (error) {
-            console.error('Error al cargar los donantes:', error);
-            wall.innerHTML = '<p>No se pudo cargar la lista de donantes. Inténtalo de nuevo más tarde.</p>';
+            console.error('Error al cargar los comentarios:', error);
+            wall.innerHTML = '<p class="error-message">No se pudieron cargar los comentarios. Inténtalo de nuevo más tarde.</p>';
+            loadMoreButton.style.display = 'none';
         }
     }
 
-    // Llamar a la función para cargar los donantes
-    fetchAndDisplaySupporters();
+    // Event listener para el botón "Ver más"
+    if (loadMoreButton) {
+        loadMoreButton.addEventListener('click', fetchAndDisplayComments);
+    }
+
+    // Llamar a la función para cargar los primeros comentarios
+    fetchAndDisplayComments();
 
 });

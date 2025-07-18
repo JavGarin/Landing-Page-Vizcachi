@@ -7,23 +7,34 @@ const redis = new Redis({
 
 export default async function handler(request, response) {
   if (request.method === 'POST') {
-    // Webhook para Buy Me a Coffee y PayPal
-    // Se espera un cuerpo de JSON como: { "name": "Nuevo Donante" }
-    const { name } = request.body;
+    const { nick, comment } = request.body;
 
-    if (!name) {
-      return response.status(400).json({ error: 'Name is required' });
+    if (!nick) {
+      return response.status(400).json({ error: 'Nick is required' });
     }
 
-    // Usamos un Set en Redis para evitar nombres duplicados
-    await redis.sadd('supporters', name);
+    const timestamp = new Date().toISOString();
+    const newComment = { nick, comment: comment || '', timestamp };
 
-    return response.status(200).json({ message: 'Supporter added' });
+    // Add comment to a list (for ordered retrieval)
+    await redis.lpush('donations:comments', JSON.stringify(newComment));
+
+    // Add nick to a set (for unique supporters)
+    await redis.sadd('donations:supporters_unique', nick);
+
+    return response.status(200).json({ message: 'Comment added successfully' });
 
   } else if (request.method === 'GET') {
-    // Ruta para que la página obtenga la lista
-    const supporters = await redis.smembers('supporters');
-    return response.status(200).json({ supporters });
+    const { offset = 0, limit = 10 } = request.query; // Default to 0 offset, 10 comments
+
+    // Fetch comments from the list
+    const rawComments = await redis.lrange('donations:comments', parseInt(offset), parseInt(offset) + parseInt(limit) - 1);
+    const comments = rawComments.map(c => JSON.parse(c));
+
+    // Optionally, get total count for pagination info
+    const totalComments = await redis.llen('donations:comments');
+
+    return response.status(200).json({ comments, totalComments });
 
   } else {
     response.setHeader('Allow', ['GET', 'POST']);

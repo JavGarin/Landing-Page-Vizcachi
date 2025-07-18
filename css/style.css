@@ -460,28 +460,47 @@ body {
 .supporters-wall {
     max-width: 900px;
     margin: 3rem auto 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+    display: grid; /* Usar grid para los comentarios */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 1.5rem; /* Espacio entre comentarios */
 }
 
-.supporter-chip {
+.comment-item {
     background-color: var(--bg-color);
-    color: var(--primary-color);
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px; /* Forma de píldora */
-    font-weight: bold;
-    border: 2px solid var(--accent-color);
-    transition: all 0.3s ease;
-    cursor: default; /* El cursor no cambia */
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px; /* Altura mínima para uniformidad */
 }
 
-.supporter-chip:hover {
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+.comment-nick {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.comment-text {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+    margin-bottom: 0.8rem;
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: right;
+}
+
+.no-comments-message, .error-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 2rem;
 }
 
 /* --- Grid Sections --- */
