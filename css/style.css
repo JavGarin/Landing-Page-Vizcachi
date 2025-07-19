@@ -361,6 +361,10 @@ body {
 
 /* --- Responsive --- */
 @media (min-width: 992px) {
+    #project .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .team-container {
         grid-template-columns: 1fr 1fr;
         align-items: start; /* Alinea los contenedores en la parte superior */
@@ -588,6 +592,30 @@ body {
     border-bottom: 1px solid #eee;
 }
 
+/* How it works section */
+.how-it-works-item {
+    background-color: var(--secondary-color);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-it-works-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.how-it-works-item i {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.how-it-works-item h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
 
 
 
