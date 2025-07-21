@@ -32,6 +32,29 @@ body {
     line-height: 1.6;
 }
 
+/* --- Language Switcher --- */
+.language-switcher {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
+
+#lang-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#lang-flag {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+}
+
+
 /* --- Home Section --- */
 .home {
     height: 100vh;

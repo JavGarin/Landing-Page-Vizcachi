@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# dotenv environment variables file
+.env
+
+# local database
+donations.db
+
+# npm package-lock.json
+package-lock.json
+
+# VSCode settings
+.vscode/
+
+# Vercel build output
+.vercel/
+
+# Logs
+*.log
+logs/
+
+# Thumbnails
+.DS_Store
+Thumbs.db
+
+# macOS
+.localized

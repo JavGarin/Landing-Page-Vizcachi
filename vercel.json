@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+        { "src": "api/get_total.js", "use": "@vercel/node" },
+        { "src": "api/add_donation.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+        {
+            "src": "/api/donations/total",
+            "dest": "/api/get_total.js"
+        },
+        {
+            "src": "/api/donations",
+            "dest": "/api/add_donation.js"
+        },
+        {
+            "src": "/api/webhook/new-donation",
+            "dest": "/api/add_donation.js"
+        }
+    ]
+}
