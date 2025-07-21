@@ -17,10 +17,5 @@
             "src": "/api/webhook/new-donation",
             "dest": "/api/add_donation.js"
         }
-    },
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
-        }
     ]
 }
