@@ -403,23 +403,23 @@ body {
     box-shadow: none;
 }
 
-#project details {
+.accordion details {
     background-color: var(--secondary-color);
     border: 1px solid #eee;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
-#project details:not(:last-child) {
+.accordion details:not(:last-child) {
     margin-bottom: 1.5rem;
 }
 
-#project details:hover {
+.accordion details:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.06);
 }
 
-#project summary {
+.accordion summary {
     position: relative;
     padding: 2rem;
     padding-right: 5rem;
@@ -428,17 +428,17 @@ body {
     list-style: none;
 }
 
-#project summary::-webkit-details-marker {
+.accordion summary::-webkit-details-marker {
     display: none;
 }
 
-#project summary h3 {
+.accordion summary h3 {
     margin: 0;
     display: inline;
     color: var(--primary-color);
 }
 
-#project summary::after {
+.accordion summary::after {
     content: '+';
     position: absolute;
     top: 50%;
@@ -450,11 +450,11 @@ body {
     transition: transform 0.2s ease;
 }
 
-#project details[open] > summary::after {
+.accordion details[open] > summary::after {
     transform: translateY(-50%) rotate(45deg);
 }
 
-#project details > p {
+.accordion details > p {
     padding: 0.5rem 2rem 2rem 2rem; /* Padding ajustado */
     margin: 0;
     color: var(--text-color);
@@ -467,7 +467,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-#project details[open] > summary {
+.accordion details[open] > summary {
     border-bottom: 1px solid #eee;
 }
 
@@ -550,69 +550,15 @@ body {
     box-shadow: none;
 }
 
-#eco-pets details {
-    background-color: var(--secondary-color);
-    border: 1px solid #eee;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-#eco-pets details:not(:last-child) {
-    margin-bottom: 1.5rem;
-}
-
-#eco-pets details:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.06);
-}
-
-#eco-pets summary {
-    position: relative;
-    padding: 2rem;
-    padding-right: 5rem;
-    cursor: pointer;
-    outline: none;
-    list-style: none;
+#eco-pets .accordion summary {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-#eco-pets summary::-webkit-details-marker {
-    display: none;
-}
-
-#eco-pets summary h4 {
+#eco-pets .accordion summary h4 {
     margin-top: 1rem;
     color: var(--primary-color);
-}
-
-#eco-pets summary::after {
-    content: '+';
-    position: absolute;
-    top: 50%;
-    right: 2rem;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--accent-color);
-    transition: transform 0.2s ease;
-}
-
-#eco-pets details[open] > summary::after {
-    transform: translateY(-50%) rotate(45deg);
-}
-
-#eco-pets details > p {
-    padding: 0.5rem 2rem 2rem 2rem; /* Padding ajustado */
-    margin: 0;
-    color: var(--text-color);
-    line-height: 1.7;
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-#eco-pets details[open] > summary {
-    border-bottom: 1px solid #eee;
 }
 
 /* How it works section */
